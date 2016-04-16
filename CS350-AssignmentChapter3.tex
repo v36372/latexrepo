@@ -1,0 +1,165 @@
+\documentclass[a4paper,12pt]{report}
+\renewcommand{\bibname}{References}
+\usepackage{forest}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+Name: Nguyen Trong Tin
+
+Student ID: 1251045 
+
+\centerline{CS350 - ALGORITHM AND COMPLEXITY}
+\centerline{ASSIGNMENT CHAPTER 3}
+
+\section*{Problem 3.1}
+To find the number of key comparisons in the average case, we assume that the \(i^{th}\) key occurs with probability \(p_i\)
+Then the average number of comparisons for a successful search is
+\[ C(n)=\sum_{i=1}^n ip_i \]
+\subsection*{a)}
+\[ p_1=\frac{1}{2},p_2=\frac{1}{4},\ldots,p_{n-1}=\frac{1}{2^{n-1}},p_n=\frac{1}{2^n}\]
+We have
+\(p_i=\frac{1}{2^i} \)
+,then
+\[C(n)=\sum_{i=1}^n \frac{i}{2^i}=\frac{1}{2}+\frac{2}{2^2}+\frac{3}{2^3}+\cdots+\frac{n}{2^{n}} \]
+For simplicity, let \(x=\frac{1}{2}\) and
+\[S(x)=C(n)=x+2x^2+3x^3+\cdots+nx^n\] 
+We have \(S(1)=1+2+3+\cdots+n=\frac{n(n+1)}{2} \)
+\newline
+For \(x \ne 1\),
+\[xS(x)=(x+2x^2+3x^3+\cdots+nx^n)x=x^2+2x^3+3x^4+\cdots+nx^{n+1}\]
+Subtract both sides with \(S(x)\)
+\begin{eqnarray*}
+\ S(x)-xS(x)& = &x+2x^2+3x^3+\cdots+nx^n-(x^2+2x^3+3x^4+\cdots+nx^{n+1})\\
+S(x)(1-x) & = & x+x^2+x^3+\cdots+x^n-nx^{n+1}\\
+S(x)(1-x) & = & x+x^2+x^3+\cdots+x^n-nx^{n+1}\\
+S(x)(1-x) & = & x(1+x+\cdots+x^{n-1})-nx^{n+1}\\
+S(x)(1-x) & = & \frac{x(x^n-1)}{x-1}-nx^{n+1}\\
+S(x)(1-x) & = & \frac{x^{n+1}-x-nx^{n+2}+nx^{n+1}}{x-1}\\
+S(x) & = & \frac{nx^{n+2}-(n+1)x^{n+1}+x}{(x-1)^2}
+\end{eqnarray*}
+Replace \(x=\frac{1}{2} \), we get
+\[S(x)=C(n)=2-\frac{n+2}{2^n}<2\]
+It takes less than two comparisons for a successful search.
+\subsection*{b)}
+\[p_1=\frac{1}{1.2},p_2=\frac{1}{2.3},\ldots,p_n=\frac{1}{n(n+1)}\]
+We have \(p_i=\frac{1}{i(i+1)}\), then
+\[C(n)=\sum_{i=1}^n \frac{i}{i(i+1)}=\frac{1}{1.2}+\frac{2}{2.3}+\cdots+\frac{n}{n(n+1)}=\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n+1}\]
+Let \(H_n = 1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}\), \(H_n\) is called the harmonic number.
+\newline
+According to \cite{wiki}, the \(n^{th}\) harmonic number \(H_n\) is calculated approximately by
+\[H_n \approx \ln(n)+\gamma+\frac{1}{2n}-\frac{1}{12n^2}+\frac{1}{120n^4}-\cdots\]
+where\(\: \gamma\approx0.5772156649\) is the Euler–Mascheroni constant
+\newline
+Hence, we have 
+\[C(n)=H_{n+1}-1\approx\ln(n+1)+\gamma+\frac{1}{2n}-\frac{1}{12n^2}+\frac{1}{120n^4}-1=O(\ln(n))\]
+\subsection*{c)}
+\[p_1=n.c,p_2=(n-1)c,\ldots,p_n=c,\: for \: 0<c<\frac{2}{n(n+1)}\]
+We have \(p_i=(n-i+1)c\), then
+\begin{eqnarray*}
+\ C(n)=\sum_{i=1}^n i(n-i+1)c&=&nc+2(n-1)c+\cdots+(n-1)2c+nc\\
+&=&c[n+(n-1)+\cdots+1]+c[(n-1)+(n-2)+\cdots+1]+\cdots\\
+&=&c\frac{n(n+1)}{2}+c\frac{(n-1)n}{2}+\cdots+c\frac{1.2}{2}\\
+\end{eqnarray*}
+We have \(\frac{n(n+1)}{2}+\frac{(n-1)n}{2}=n^2\), Therefore, we can calculate \(C(n)\) like this
+\begin{eqnarray*}
+\ C(1)&=&c(1^2)\\
+C(2)&=&c(2^2)\\
+C(3)&=&c(1^2+3^2)\\
+C(4)&=&c(2^2+4^2)\\
+\cdots\\
+\end{eqnarray*}
+To sum up,
+\[C(n)=c(1^2+3^2+5^2+\cdots+n^2),\: if \: 1 \equiv n(mod\: 2)\]
+\[C(n)=c(0^2+2^2+4^2+\cdots+n^2),\: if \: 0 \equiv n(mod\: 2)\]
+We have a nice calculation for \(C(n)\)
+\[C(n)=c\frac{n(n+1)(n+2)}{6}<\frac{n+2}{3}\]
+Thus in the case of a successful search, the running time improves by \(50\%\) in comparison to the uniform distribution
+\subsection*{d)}
+\[p_1=c,p_2=\frac{c}{2},\cdots,p_n=\frac{c}{n},\: for\: 0<c<\frac{1}{H_n}\]
+We have \(p_i=\frac{c}{i}\), then
+\[C(n)=\sum_{i=1}^n i\frac{c}{i}=nc<\frac{n}{H_n}\approx\frac{n}{\ln{n}}\]
+Thus the successful running time improves by a factor of \(\ln{n}\) in comparison to the uniform distribution
+\section*{Problem 3.2}
+\subsection*{a)}
+\[9,2,5,3,4,6,1,10,7,8\]
+\begin{forest}
+    % for tree={
+    %   edge={{Stealth[]}-},
+    % }
+    [9
+      [2
+        [1
+        ]
+        [5
+          [3
+          	[,phantom
+          	]
+          	[4
+          	]
+          ]
+          [6
+          	[,phantom
+          	]
+          	[7
+          	  [,phantom
+          	  ]
+          	  [8
+          	  ]	
+          	]
+          ]
+        ]
+      ]
+      [10
+      ]
+    ]
+\end{forest}
+\subsection*{b)}
+We have 4 primes \(P=\{2,3,5,7\}\)
+\newline
+To search for \(x=2,\) we need \(2\) comparisons. Probability for a search of 2 is \(p_2=\frac{1}{20}\)
+\newline
+To search for \(x=3,\) we need \(4\) comparisons. Probability for a search of 3 is \(p_3=\frac{1}{10}\)
+\newline
+To search for \(x=5,\) we need \(3\) comparisons. Probability for a search of 5is \(p_5=\frac{1}{10}\)
+\newline
+To search for \(x=7,\) we need \(5\) comparisons. Probability for a search of 7 is \(p_7=\frac{1}{10}\)
+\newline
+Therefore, average number of comparisons for a successful search for a prime number is
+\[C_{prime}=2.\frac{1}{20}+4.\frac{1}{10}+3.\frac{1}{10}+5.\frac{1}{10}=1.3\]
+\subsection*{c)}
+The number of comparisons required to find \(v\) is \(d(v)\)
+\newline
+We have 
+\[d(1)=3,p_1=\frac{1}{10}\]
+\[d(2)=2,p_2=\frac{1}{20}\]
+\[d(3)=4,p_3=\frac{1}{10}\]
+\[d(4)=5,p_4=\frac{1}{20}\]
+\[d(5)=3,p_5=\frac{1}{10}\]
+\[d(6)=4,p_6=\frac{1}{20}\]
+\[d(7)=5,p_7=\frac{1}{10}\]
+\[d(8)=6,p_8=\frac{1}{20}\]
+\[d(9)=1,p_9=\frac{1}{10}\]
+\[d(10)=2,p_{10}=\frac{1}{20}\]
+\[C(n)=\sum_{i=1}^{10} p_id(i)=\frac{3}{10}+\frac{2}{20}+\frac{4}{10}+\frac{5}{20}+\frac{3}{10}+\frac{4}{20}+\frac{5}{10}+\frac{6}{20}+\frac{1}{10}+\frac{2}{20}=2.55\]
+\section*{Problem 3.3}
+We have \(n\) keys in the table and \(m\) slots.
+\newline
+The average number of probes for an unsuccessful search is
+\[\frac{n}{m}=\alpha\]
+The average number of probes for a succesful search is
+\[C_n=\frac{1}{m}\sum_{k=1}^n (k-1)p_k +1=\frac{1}{m}\sum_{k=1}^n (k-1)\frac{1}{2^k} +1=\frac{1}{m}(\frac{1}{2^2}+\frac{2}{2^3}+\cdots+\frac{n-1}{2^n})+1=\frac{1}{m}X+1\]
+We have this fact
+\[Y=1+\frac{1}{2}+\frac{1}{2^2}+\cdots+\frac{1}{2^n}=\frac{1-\frac{1}{2^{n+1}}}{1-\frac{1}{2}}=2-\frac{1}{2^n}\]
+From problem 3.1a, we have 
+\[S(x)=S(\frac{1}{2})=\frac{1}{2}+\frac{2}{2^2}+\frac{3}{2^3}+\cdots+\frac{n}{2^n}=2-\frac{n+2}{2^n}\]
+Notice that
+\[X+Y=(\frac{1}{2^2}+\frac{2}{2^3}+\cdots+\frac{n-1}{2^n})+(1+\frac{1}{2}+\frac{1}{2^2}+\cdots+\frac{1}{2^n})=1+\frac{1}{2}+\frac{2}{2^2}+\cdots+\frac{n}{2^n}=S(x)+1\]
+Therefore
+\[X=S(x)+1-Y=2-\frac{n+2}{2^n}+1-(2-\frac{1}{2^n})=1-\frac{n+1}{2^n}\]
+Thus, in average, it takes less than 1 probes for a successful search.
+
+\begin{thebibliography}{9}
+\bibitem{wiki} 
+Harmonic number,
+\\\texttt{https://en.wikipedia.org/wiki/Harmonic\_{}number\#{}Calculation}
+\end{thebibliography}
+\end{document}
