@@ -1,0 +1,186 @@
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage{hanging}
+\usepackage{parskip}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+\usepackage[T1]{fontenc}
+\usepackage[sc,osf]{mathpazo}
+
+% Set your name here
+\def\name{Tin Nguyen}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {economics, statistics, mathematics},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Other possible font commands include:
+% \ttfamily for teletype,
+% \sffamily for sans serif,
+% \bfseries for bold,
+% \scshape for small caps,
+% \normalsize, \large, \Large, \LARGE sizes.
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+\begin{document}
+
+% Place name at left
+{\huge \name}
+
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+  73/2/1 Ni Su Huynh Lien\\
+  Ward 10, Tan Binh district\\
+ Ho Chi Minh city, Vietnam\\
+ 
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \begin{tabular}{ll}
+    Email: & \href{mailto:nttin@apcs.vn}{\tt nttin@apcs.vn} \\
+    Phone: & {\tt 0918644143} \\
+  \end{tabular}
+\end{minipage}
+
+\section*{Education}
+
+\begin{itemize}
+  \item B.S. Computer Science, Ho Chi Minh University of Science, August 2016. 
+\end{itemize}
+
+\section*{Work experience}
+\begin{itemize}
+\item {\bf Shelfout.com - From Sep 2015 to Feb 2016}
+\\
+\\
+Shelfout is a small startup dedicated to create a platform for book lovers to share their books and reading experience. 
+\\
+\\
+I am responsible for developing back-end services, including continuous integration, auto deploy, testing, so called Dev Ops.
+\\
+You can visit our website here : 
+\href{http://shelfout.com}{http://shelfout.com}
+% \subitem Research Assistant for Stephen Ansolabehere at Harvard University (2012 -- current)\\
+
+
+\leftskip 0in
+\item {\bf JOY Entertainment - From Mar 2015 to Sep 2015}
+\\
+\\
+Initially, I was working here as an intern. Afterward, I was accepted to work officially as a game programmer, mostly involving C++ programming, a little bit of Javascript.
+\\
+\\
+I was responsible for:
+\begin{itemize}
+\item{-  Creating a AI system that had to be flexible to the current state of the game, which is based on an old game engine( irrlicht ). }
+\item{-  Develop a AngularJS app for managing, displaying the game logs, which suppose to help developer track down bugs faster.}
+\end{itemize}
+I participated in the mobile game called Captain Strike. You can check it out on Google Play\cite{captain}.
+\end{itemize}
+\section*{Skills}
+\begin{itemize}
+\item {\bf Golang}
+\\
+\\
+This is my primary programming language now. I've used Go in my graduation thesis project. You can look up the project Github page here \cite{thesis}
+\item {\bf Javascript}
+\\
+\\
+I've been using Javascript(AngularJS and NodeJS) for 2 years. I picked up Ionic to develop mobile applications for 3 projects at the university.
+\begin{itemize}
+\item{- TriipMe project. We interned at TriipMe and developed a mobile application for the travelling start-up.}
+\item{ - GIV project. GIV stands for Global Inspiration Vietnam. We developed a mobile app to connect Vietnamese around the world. }
+\item{ - SoLoMo project. SoLoMo stands for Social, Location and Mobile. This project aims to create a social network for sharing sale-off deals based on location.}
+\end{itemize}
+\item{\bf Python}
+\\
+\\
+My first company - JOY Entertainment, uses Python for logging services. My second company - Shelfout also uses Python as primary programming language. Therefore, I'm pretty familiar with this technology.
+\item{\bf C/C++}
+\\
+\\
+My university uses C++ as the teaching language. I am proficient with C++.
+\end{itemize}
+
+\section*{Motivation}
+My primary focus is to learn more about software engineering. I'd like to participate in projects and take on challenges. 
+\\
+\\
+I've been picking up new technologies very often, but I can adapt very well and learn very fast. This is my most valuable advantage.
+
+\begin{thebibliography}{99}
+
+\bibitem{thesis}Graduation thesis project,\ \url{https://github.com/v36372/thesis}
+
+\bibitem{captain}Captain Strike,\ \url{https://play.google.com/store/apps/details?id=com.apt.publish.captainstrike&hl=en}
+
+\bibitem{git}Github profile,\ \url{https://github.com/v36372}
+
+\end{thebibliography}
+
+\bigskip
+
+% Footer
+\begin{center}
+  \begin{footnotesize}
+    Last updated: \today \\
+  \end{footnotesize}
+\end{center}
+
+\end{document}
