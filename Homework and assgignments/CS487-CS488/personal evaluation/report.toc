@@ -1,8 +1,0 @@
-\contentsline {chapter}{\numberline {1}Team roles}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Skill learnt}{2}{chapter.2}
-\contentsline {subsection}{\numberline {2.0.1}Technical skills}{2}{subsection.2.0.1}
-\contentsline {subsection}{\numberline {2.0.2}Non-technical skill}{2}{subsection.2.0.2}
-\contentsline {chapter}{\numberline {3}Advantages and disadvantages}{3}{chapter.3}
-\contentsline {section}{\numberline {3.1}Advantages}{3}{section.3.1}
-\contentsline {section}{\numberline {3.2}Disadvantages}{3}{section.3.2}
-\contentsline {chapter}{\numberline {4}Work log}{4}{chapter.4}
